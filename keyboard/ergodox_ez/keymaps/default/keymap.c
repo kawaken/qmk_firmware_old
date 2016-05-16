@@ -8,53 +8,72 @@
 
 /*
  * JIS配列として認識させた上で使用するキーマップ
- * JIS配列にした場合に足りないキーが存在するのでそれをどうするか。
- * できたら他のキーボードに移行した場合に違和感がないようにしたい。
+ * 元々用意されているもの
+ * 全角/半角 : KC_ZKHK
+ * ろ(_)     : KC_RO
+ * 円(\)     : KC_JYEN
+ *
+ * 割り当てし直したもの
+ * ^ : JKC_CIRC = KC_EQL
+ * @ : JKC_AT   = KC_LBRC
+ * [ : JKC_LBRC = KC_RBRC
+ * ] : JKC_RBRC = KC_BSLS
+ * { : JKC_LCBR = LSFT(JKC_LBRC)
+ * } : JKC_RCBR = LSFT(JKC_RBRC)
+ * ( : JKC_LPRN = LSFT(KC_8)
+ * ) : JKC_RPRN = LSFT(KC_9)
  */
+
+#define JKC_CIRC KC_EQL
+#define JKC_AT KC_LBRC
+#define JKC_LBRC KC_RBRC
+#define JKC_RBRC KC_BSLS
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |   1  |   2  |   3  |   4  |   5  |  L2  |           |  L1  |   6  |   7  |   8  |   9  |   0  |   -    |
+ * | L2     |   1  |   2  |   3  |   4  |   5  | Home |           |  End |   6  |   7  |   8  |   9  |   0  |   L1   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |  ^   |           |  _   |   Y  |   U  |   I  |   O  |   P  |   @    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Ctrl   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |  :/L1  |
+ * | Ctrl   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   :    |
  * |--------+------+------+------+------+------|  -   |           |  \   |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | ~L2  |      |Alt   | LCmd | Esc  |                                       | Enter| RCmd |   [  |   ]  | ~L1  |
+ *   | ~L2  |ZenHan|Alt   | LGui | Esc  |                                       |Enter | RGui |   [  |   ]  | ~L2  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
- *                                        | Home |      |       |      |  End   |
+ *                                        | Left |Right |       | Up   |  Down  |
  *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      |      |       | PgUp |        |      |
- *                                 |      | 英数 |------|       |------|  かな  |BkSpc |
- *                                 |      |      |      |       | PgDn |        |      |
+ *                                 |      |      | Home |       | PgUp |        |      |
+ *                                 |L1/   | EISU |------|       |------|  KANA  |L1/   |
+ *                                 |BkSpc |      | End  |       | PgDn |        |Space |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
-        KC_DELT,        KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TG(SYMB),
-        KC_BSPC,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
-        KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
-        LT(SYMB,KC_GRV),KC_QUOT,      LALT(KC_LSFT),  KC_LEFT,KC_RGHT,
-                                              ALT_T(KC_APP),  KC_LGUI,
-                                                              KC_HOME,
-                                               KC_SPC,KC_BSPC,KC_END,
+        TG(MDIA),       KC_1,         KC_2,    KC_3,   KC_4,   KC_5,   KC_HOME,
+        KC_TAB,         KC_Q,         KC_W,    KC_E,   KC_R,   KC_T,   JKC_CIRC,
+        KC_LCTL,        KC_A,         KC_S,    KC_D,   KC_F,   KC_G,
+        KC_LSFT,        KC_Z,         KC_X,    KC_C,   KC_V,   KC_B,   KC_MINS,
+        KC_FN2,         KC_ZKHK,      KC_LALT, KC_LGUI,KC_ESC,
+
+                                               KC_LEFT,                  KC_RGHT,
+                                                                         KC_HOME,
+                                               LT(SYMB,KC_BSPC),KC_LANG2,KC_END,
         // right hand
-             KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_MINS,
-             TG(SYMB),    KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_BSLS,
-                          KC_H,   KC_J,   KC_K,   KC_L,   LT(MDIA, KC_SCLN),GUI_T(KC_QUOT),
-             MEH_T(KC_NO),KC_N,   KC_M,   KC_COMM,KC_DOT, CTL_T(KC_SLSH),   KC_RSFT,
-                                  KC_UP,  KC_DOWN,KC_LBRC,KC_RBRC,          KC_FN1,
-             KC_LALT,        CTL_T(KC_ESC),
-             KC_PGUP,
-             KC_PGDN,KC_TAB, KC_ENT
+        KC_END,     KC_6,   KC_7,   KC_8,   KC_9,    KC_0,             TG(SYMB),
+        KC_RO,      KC_Y,   KC_U,   KC_I,   KC_O,    KC_P,             JKC_AT,
+                    KC_H,   KC_J,   KC_K,   KC_L,    KC_SCLN,          KC_QUOT,
+        KC_JYEN,    KC_N,   KC_M,   KC_COMM,KC_DOT,  CTL_T(KC_SLSH),   KC_RSFT,
+                            KC_ENT, KC_RGUI,JKC_LBRC,JKC_RBRC,         KC_FN2,
+
+        KC_UP,           KC_DOWN,
+        KC_PGUP,
+        KC_PGDN,KC_LANG1,LT(SYMB, KC_SPC)
     ),
 /* Keymap 1: Symbol Layer
  *
