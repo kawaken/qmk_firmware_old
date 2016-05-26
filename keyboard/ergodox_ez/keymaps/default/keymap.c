@@ -24,14 +24,14 @@
  * ) : JKC_RPRN = LSFT(KC_9)
  */
 
-#define JKC_CIRC KC_EQL
-#define JKC_AT KC_LBRC
-#define JKC_LBRC KC_RBRC
-#define JKC_RBRC KC_BSLS
-#define JKC_LCBR LSFT(JKC_LBRC)
-#define JKC_RCBR LSFT(JKC_RBRC)
-#define JKC_LPRN LSFT(KC_8)
-#define JKC_RPRN LSFT(KC_9)
+#define JKC_CIRC KC_EQL          // ^
+#define JKC_AT KC_LBRC           // @
+#define JKC_LBRC KC_RBRC         // [
+#define JKC_RBRC KC_BSLS         // ]
+#define JKC_LCBR LSFT(JKC_LBRC)  // {
+#define JKC_RCBR LSFT(JKC_RBRC)  // }
+#define JKC_LPRN LSFT(KC_8)      // (
+#define JKC_RPRN LSFT(KC_9)      // )
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -43,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Ctrl   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   :    |
  * |--------+------+------+------+------+------|  -   |           |  _   |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |_/RShift|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | ~L2  |ZenHan|Alt   | LGui | Esc  |                                       |Enter |BkSpc |   [  |   ]  | ~L2  |
+ *   | EISU |ZenHan|Alt   | LGui |ESC   |                                       |Enter |BkSpc |   [  |   ]  | KANA |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
  *                                        | Left |Right |       | Left | Right  |
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_Q,         KC_W,    KC_E,   KC_R,   KC_T,   JKC_CIRC,
         KC_LCTL,        KC_A,         KC_S,    KC_D,   KC_F,   KC_G,
         KC_LSFT,        KC_Z,         KC_X,    KC_C,   KC_V,   KC_B,   KC_MINS,
-        MO(MDIA),       KC_ZKHK,      KC_LALT, KC_LGUI,KC_ESC,
+        KC_LANG2,       KC_ZKHK,      KC_LALT, KC_LGUI,KC_ESC,
 
                                                KC_LEFT,                 KC_RGHT,
                                                                         KC_UP,
@@ -72,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TG(MDIA),     KC_6,   KC_7,   KC_8,   KC_9,    KC_0,             KC_MINS,
         KC_JYEN,      KC_Y,   KC_U,   KC_I,   KC_O,    KC_P,             JKC_AT,
                       KC_H,   KC_J,   KC_K,   KC_L,    KC_SCLN,          KC_QUOT,
-        KC_RO,        KC_N,   KC_M,   KC_COMM,KC_DOT,  CTL_T(KC_SLSH),   KC_RSFT,
-                            KC_ENT, KC_BSPC, JKC_LBRC,JKC_RBRC,         MO(MDIA),
+        KC_RO,        KC_N,   KC_M,   KC_COMM,KC_DOT,  CTL_T(KC_SLSH),   LT(KC_RSFT, KC_RO),
+                            KC_ENT, KC_BSPC, JKC_LBRC,JKC_RBRC,         KC_LANG1,
 
         KC_LEFT,         KC_RGHT,
         KC_UP,
