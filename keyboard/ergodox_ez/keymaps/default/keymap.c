@@ -32,6 +32,7 @@
 #define JKC_RCBR LSFT(JKC_RBRC)  // }
 #define JKC_LPRN LSFT(KC_8)      // (
 #define JKC_RPRN LSFT(KC_9)      // )
+#define JKC_AMPR LSFT(KC_6)      // &
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -114,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // right hand
        KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,JKC_LBRC, JKC_RBRC,KC_TRNS,KC_TRNS,
-               KC_TRNS,KC_AMPR,JKC_LCBR, JKC_RCBR,KC_TRNS, KC_TRNS,
+               KC_TRNS,JKC_AMPR,JKC_LCBR, JKC_RCBR,KC_TRNS, KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,
                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,
