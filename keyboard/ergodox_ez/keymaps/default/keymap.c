@@ -33,7 +33,7 @@
 #define JKC_LPRN LSFT(KC_8)      // (
 #define JKC_RPRN LSFT(KC_9)      // )
 #define JKC_AMPR LSFT(KC_6)      // &
-#define JCK_EQL LSFT(KC_MINS)    // =
+#define JKC_EQL LSFT(KC_MINS)    // =
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
