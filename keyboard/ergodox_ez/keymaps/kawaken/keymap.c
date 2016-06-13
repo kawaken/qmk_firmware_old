@@ -5,6 +5,7 @@
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define MDIA 2 // media keys
+#define NUMB 3 // numberf keys
 
 /*
  * JIS配列として認識させた上で使用するキーマップ
@@ -39,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * | ESC    |   1  |   2  |   3  |   4  |   5  |  6   |           |  5   |   6  |   7  |   8  |   9  |   0  |   -    |
+ * | ESC    |   1  |   2  |   3  |   4  |   5  |  6   |           |  5   |   6  |   7  |   8  |   9  |   0  | BkSpc  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |  ^   |           |  \   |   Y  |   U  |   I  |   O  |   P  |   @    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -47,14 +48,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|  -   |           |  =   |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |_/RShift|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Eject|ZenHan|Alt   | LGui |L1/ESC|                                       |L2/Ent|BkSpc |   [  |   ]  | Wake  |
+ *   | L3   |ZenHan|Alt   | LGui |L1/ESC|                                       |L2/Ent|BkSpc |   [  |   ]  | Eject|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
- *                                        | Left |Right |       | Left | Right  |
+ *                                        | Home | End  |       | Left | Right  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Up   |       | Up   |        |      |
  *                                 |      |      |------|       |------|        |      |
- *                                 |Space |EISU  | Down |       | Down |KANA    |Space |
+ *                                 |Space |Tab   | Down |       | Down |Enter   |Space |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -67,19 +68,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,        KC_Z,         KC_X,    KC_C,   KC_V,   KC_B,   KC_MINS,
         KC_EJCT,       KC_ZKHK,      KC_LALT, KC_LGUI,LT(SYMB, KC_ESC),
 
-                                               KC_LEFT,                 KC_RGHT,
+                                               KC_HOME,                 KC_END,
                                                                         KC_UP,
-                                               KC_SPC,KC_LANG2,KC_DOWN,
+                                               KC_SPC,KC_TAB,KC_DOWN,
         // right hand
-        KC_5,         KC_6,   KC_7,   KC_8,   KC_9,    KC_0,             KC_MINS,
+        KC_5,         KC_6,   KC_7,   KC_8,   KC_9,    KC_0,             KC_BSPC,
         KC_JYEN,      KC_Y,   KC_U,   KC_I,   KC_O,    KC_P,             JKC_AT,
                       KC_H,   KC_J,   KC_K,   KC_L,    KC_SCLN,          KC_QUOT,
         LSFT(KC_MINS),      KC_N,   KC_M,   KC_COMM,KC_DOT,  KC_SLSH,   SFT_T(KC_RO),
-                            LT(MDIA,KC_ENT), KC_BSPC, JKC_LBRC,JKC_RBRC,   KC_RO,
+                            LT(MDIA,KC_ENT), KC_BSPC, JKC_LBRC,JKC_RBRC,   KC_EJCT,
 
         KC_LEFT,         KC_RGHT,
         KC_UP,
-        KC_DOWN,KC_LANG1,KC_SPC
+        KC_DOWN,KC_ENT,KC_SPC
     ),
 /* Keymap 1: Symbol Layer
  *
@@ -105,23 +106,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = KEYMAP(
        // left hand
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,LSFT(KC_1),LSFT(KC_2),LSFT(KC_3),LSFT(KC_4) ,LSFT(KC_5),
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,
-                                       KC_TRNS,KC_TRNS,
-                                               KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+       KC_TRNS, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5),
+       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+
+                                                                KC_TRNS,    KC_TRNS,
+                                                                            KC_TRNS,
+                                                    KC_TRNS,    KC_TRNS,    KC_TRNS,
        // right hand
-       KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,JKC_LBRC, JKC_RBRC,KC_TRNS,KC_TRNS,
-               LSFT(KC_6),LSFT(KC_7),JKC_LPRN, JKC_RPRN,KC_TRNS, KC_TRNS,
- LGUI(JKC_RBRC),KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,
-                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS,    KC_TRNS,    JKC_LBRC, JKC_RBRC, KC_TRNS, KC_TRNS,
+                LSFT(KC_6), LSFT(KC_7), JKC_LPRN, JKC_RPRN, KC_TRNS, KC_TRNS,
+LGUI(JKC_RBRC), KC_TRNS,    KC_TRNS,    JKC_LCBR, JKC_RCBR, KC_TRNS, KC_TRNS,
+                KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,
+
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_LANG1
+       KC_TRNS, KC_TRNS,    KC_LANG1
 ),
 /* Keymap 2: Media and mouse keys
  *
