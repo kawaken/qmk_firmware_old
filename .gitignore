@@ -1,9 +1,10 @@
-keyboard/planck/dfu-programmer.exe
 .dep
 *.o
 *.eep
 *.elf
 *.hex
+!util/bootloader.hex
+!quantum/tools/eeprom_reset.hex
 *.log
 *.lss
 *.lst
@@ -13,6 +14,7 @@ keyboard/planck/dfu-programmer.exe
 tags
 *~
 build/
+.build/
 *.bak
 .vagrant/
 .idea/
