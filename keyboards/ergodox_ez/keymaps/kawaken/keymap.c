@@ -129,11 +129,11 @@ LGUI(JKC_RBRC), KC_TRNS,    KC_TRNS,    JKC_LBRC, JKC_RBRC, KC_TRNS, KC_TRNS,
 /* Keymap 2: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
+ * | RESET  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      | MsUp |      |WhDown|      |           |      | Home | PgUp |PgDown| End  |      |   F12  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | RESET  |      |MsLeft|MsDown|MsRght|WhUp  |------|           |------| Left | Down | Up   | Right|      |  Play  |
+ * |        |      |MsLeft|MsDown|MsRght|WhUp  |------|           |------| Left | Down | Up   | Right|      |  Play  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      | Lclk | Rclk |      |      |           |      |      |      | Prev | Next |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -149,9 +149,9 @@ LGUI(JKC_RBRC), KC_TRNS,    KC_TRNS,    JKC_LBRC, JKC_RBRC, KC_TRNS, KC_TRNS,
  */
 // MEDIA AND MOUSE
 [MDIA] = KEYMAP(
-       KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
+       RESET, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_WH_U, KC_TRNS,
-       RESET,   KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D,
+       KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                            KC_TRNS, KC_TRNS,
