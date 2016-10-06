@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Symbol Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      | C+A+D  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |   {  |   }  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                             KC_TRNS,
                                                     KC_TRNS,    KC_TRNS,    KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS, LCTL(LALT(KC_DEL)),
        KC_TRNS, KC_TRNS,    KC_TRNS,    JKC_LCBR, JKC_RCBR, KC_TRNS, KC_TRNS,
                 LSFT(KC_6), LSFT(KC_7), JKC_LPRN, JKC_RPRN, KC_TRNS, KC_TRNS,
 LGUI(JKC_RBRC), KC_TRNS,    KC_TRNS,    JKC_LBRC, JKC_RBRC, KC_TRNS, KC_TRNS,
