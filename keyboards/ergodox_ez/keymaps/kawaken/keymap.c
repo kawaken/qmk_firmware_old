@@ -7,35 +7,6 @@
 #define MDIA 2 // media keys
 #define NUMB 3 // numberf keys
 
-/*
- * JIS配列として認識させた上で使用するキーマップ
- * 元々用意されているもの
- * 全角/半角 : KC_ZKHK
- * ろ(_)     : KC_RO
- * 円(\)     : KC_JYEN
- *
- * 割り当てし直したもの
- * ^ : JKC_CIRC = KC_EQL
- * @ : JKC_AT   = KC_LBRC
- * [ : JKC_LBRC = KC_RBRC
- * ] : JKC_RBRC = KC_BSLS
- * { : JKC_LCBR = LSFT(JKC_LBRC)
- * } : JKC_RCBR = LSFT(JKC_RBRC)
- * ( : JKC_LPRN = LSFT(KC_8)
- * ) : JKC_RPRN = LSFT(KC_9)
- */
-
-#define JKC_CIRC KC_EQL          // ^
-#define JKC_AT KC_LBRC           // @
-#define JKC_LBRC KC_RBRC         // [
-#define JKC_RBRC KC_BSLS         // ]
-#define JKC_LCBR LSFT(JKC_LBRC)  // {
-#define JKC_RCBR LSFT(JKC_RBRC)  // }
-#define JKC_LPRN LSFT(KC_8)      // (
-#define JKC_RPRN LSFT(KC_9)      // )
-#define JKC_AMPR LSFT(KC_6)      // &
-#define JKC_EQL LSFT(KC_MINS)    // =
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -63,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
         KC_ESC,         KC_1,         KC_2,    KC_3,   KC_4,   KC_5,   KC_6,
-        KC_TAB,         KC_Q,         KC_W,    KC_E,   KC_R,   KC_T,   JKC_CIRC,
+        KC_TAB,         KC_Q,         KC_W,    KC_E,   KC_R,   KC_T,   KC_CIRC,
         KC_LCTL,        KC_A,         KC_S,    KC_D,   KC_F,   KC_G,
         KC_LSFT,        KC_Z,         KC_X,    KC_C,   KC_V,   KC_B,   KC_MINS,
         KC_EJCT,       KC_ZKHK,      KC_LALT, KC_LGUI,LT(SYMB, KC_ESC),
